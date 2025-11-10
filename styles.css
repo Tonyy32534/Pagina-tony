@@ -1,0 +1,231 @@
+:root {
+  --color-primary: #4CAF50;
+  --color-secondary: #8BC34A;
+  --color-accent: #FF9800;
+  --color-bg: #f9f9f9;
+  --color-text: #333;
+  --font-title: 'Poppins', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-title);
+  margin-bottom: 0.8rem;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+a:hover, a:focus {
+  text-decoration: underline;
+  outline: 2px solid var(--color-accent);
+}
+
+.header {
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header h1 {
+  text-align: center;
+  color: var(--color-primary);
+}
+.nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+  list-style: none; 
+}
+
+/* Sección de Inicio Mejorada */
+.hero-section {
+  background: linear-gradient(135deg, #e0f7fa 0%, #c8e6c9 100%);
+  padding: 4rem 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.hero-title {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+.hero-description {
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background-color: var(--color-accent);
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.cta-button:hover, .cta-button:focus {
+  background-color: #f57c00;
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Sección General */
+.section {
+  padding: 2rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Sección de Acerca de Mejorada */
+.about-section {
+  background-color: #f1f8e9;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.about-title {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+.about-description {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+.about-contact {
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-top: 1rem;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.controls input, .controls select {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+.controls input {
+    flex-grow: 1; 
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+.recipe-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s;
+}
+.recipe-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.recipe-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transform: translateY(-5px);
+}
+.recipe-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+.recipe-card h3 {
+  padding: 1rem 1rem 0.5rem;
+  color: var(--color-primary);
+  font-size: 1.25rem;
+}
+.recipe-card p {
+  padding: 0 1rem 1rem;
+  color: #555;
+}
+.category-tag {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+  padding: 0 1rem 1rem;
+}
+
+.tree-container ul {
+  list-style: none;
+  padding-left: 1.5rem;
+}
+.tree-container li {
+  margin: 0.6rem 0;
+}
+.tree-toggle {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-secondary);
+  display: inline-block;
+  padding: 0.2rem 0;
+}
+.tree-toggle::before {
+  content: "▶ ";
+}
+.tree-toggle.open::before {
+  content: "▼ ";
+}
+
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #eee;
+    color: #666;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 576px) {
+  .nav ul { flex-direction: column; align-items: center; gap: 0.8rem; }
+  .hero-title { font-size: 2rem; }
+  .controls { flex-direction: column; }
+  .recipes-grid { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+  .recipes-grid { grid-template-columns: repeat(2, 1fr); }
+}

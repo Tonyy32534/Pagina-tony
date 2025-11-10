@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería de Recetas Saludables</title>
+  
+  <link rel="stylesheet" href="styles.css" /> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <h1>🥗 Galería de Recetas Saludables</h1>
+    <nav class="nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#arbol">Categorías</a></li>
+        <li><a href="#contacto">Acerca de</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero-section">
+      <div class="hero-content">
+        <h2 class="hero-title">¡Bienvenido/a a tu rincón saludable! 🌿</h2>
+        <p class="hero-description">Descubre recetas deliciosas, nutritivas y fáciles de preparar. Ideal para cuidarte sin sacrificar el sabor.</p>
+        <a href="#catalogo" class="cta-button">Explorar Recetas</a>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section">
+      <h2>Catálogo de Recetas</h2>
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="Buscar receta..." aria-label="Buscar receta" />
+        <select id="sortSelect" aria-label="Ordenar recetas">
+          <option value="az">A–Z</option>
+          <option value="za">Z–A</option>
+        </select>
+      </div>
+      <div id="recipesContainer" class="recipes-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="arbol" class="section">
+      <h2>Categorías y Subcategorías</h2>
+      <div class="tree-container">
+        <ul>
+          <li>
+            <span class="tree-toggle" tabindex="0" role="button" aria-expanded="false">Desayunos</span>
+            <ul style="display: none;">
+              <li><strong>Bowls:</strong> Bowl de Açaí con Frutas</li>
+              <li><strong>Platos principales:</strong> Tostadas de Aguacate y Huevo Escalfado, Tortilla de Espinacas y Cebolla Caramelizada</li>
+              <li><strong>Bebidas:</strong> Smoothie Verde de Espinaca y Piña</li>
+            </ul>
+          </li>
+          <li>
+            <span class="tree-toggle" tabindex="0" role="button" aria-expanded="false">Almuerzos</span>
+            <ul style="display: none;">
+              <li><strong>Ensaladas:</strong> Ensalada de Quinoa, Aguacate y Granada</li>
+              <li><strong>Wraps:</strong> Wrap Integral de Hummus y Verduras</li>
+              <li><strong>Bowls:</strong> Bowl de Lentejas con Verduras Asadas, Bowl de Salmón, Arroz Integral y Edamame</li>
+            </ul>
+          </li>
+          <li>
+            <span class="tree-toggle" tabindex="0" role="button" aria-expanded="false">Cenas</span>
+            <ul style="display: none;">
+              <li><strong>Sopas:</strong> Sopa de Miso con Tofu y Wakame</li>
+              <li><strong>Pescados:</strong> Verduras Asadas con Salmón al Romero</li>
+              <li><strong>Vegetariano:</strong> Tacos de Coliflor Asada</li>
+            </ul>
+          </li>
+          <li>
+            <span class="tree-toggle" tabindex="0" role="button" aria-expanded="false">Postres</span>
+            <ul style="display: none;">
+              <li><strong>Postres fríos:</strong> Mousse de Aguacate y Cacao</li>
+              <li><strong>Snacks:</strong> Galletas de Avena, Plátano y Nueces</li>
+              <li><strong>Helados:</strong> Helado de Plátano Congelado con Cacao</li>
+            </ul>
+          </li>
+          <li>
+            <span class="tree-toggle" tabindex="0" role="button" aria-expanded="false">Bebidas</span>
+            <ul style="display: none;">
+              <li><strong>Jugos:</strong> Jugo de Zanahoria, Jengibre y Naranja</li>
+              <li><strong>Infusiones:</strong> Té de Cúrcuma y Pimienta Negra</li>
+              <li><strong>Batidos:</strong> Batido de Proteína Vegana con Frutos Rojos</li>
+            </ul>
+          </li>
+          <li>
+            <span class="tree-toggle" tabindex="0" role="button" aria-expanded="false">Snacks</span>
+            <ul style="display: none;">
+              <li><strong>Untables:</strong> Hummus Casero con Pimentón Ahumado</li>
+              <li><strong>Snacks salados:</strong> Palomitas de Maíz con Levadura Nutricional</li>
+              <li><strong>Barritas:</strong> Barritas Energéticas de Dátiles y Semillas</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contacto" class="about-section">
+      <div class="about-content">
+        <h2 class="about-title">Acerca de Nosotros</h2>
+        <p class="about-description">Somos un equipo apasionado por la alimentación consciente, saludable y deliciosa. Nuestro objetivo es inspirarte a cocinar con ingredientes frescos y nutritivos, sin complicaciones.</p>
+        <p class="about-contact">¿Tienes ideas o preguntas? Escríbenos: <a href="mailto:hola@recetassaludables.com">hola@recetassaludables.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Galería de Recetas Saludables</p>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT CORREGIDO ==================== -->
+  <script>
+    // === DATOS DE LAS RECETAS ===
+    const recipes = [
+      { id: 1, nombre: "Bowl de Açaí con Frutas", categoria: "Desayunos", subcategoria: "Bowls", descripcion: "Energizante, antioxidante y 100% natural.", imagen: "imagen1.jpg" },
+      { id: 2, nombre: "Tostadas de Aguacate y Huevo Escalfado", categoria: "Desayunos", subcategoria: "Platos principales", descripcion: "Grasas buenas, proteína y fibra en un solo plato.", imagen: "imagen2.jpg" },
+      { id: 3, nombre: "Smoothie Verde de Espinaca y Piña", categoria: "Desayunos", subcategoria: "Bebidas", descripcion: "Refrescante, depurativo y lleno de vitaminas.", imagen: "3.jpg" },
+      { id: 4, nombre: "Ensalada de Quinoa, Aguacate y Granada", categoria: "Almuerzos", subcategoria: "Ensaladas", descripcion: "Completa, colorida y rica en proteínas vegetales.", imagen: "2.jpg" },
+      { id: 5, nombre: "Wrap Integral de Hummus y Verduras", categoria: "Almuerzos", subcategoria: "Wraps", descripcion: "Ligero, fresco y lleno de fibra.", imagen: "5.jpg" },
+      { id: 6, nombre: "Bowl de Lentejas con Verduras Asadas", categoria: "Almuerzos", subcategoria: "Bowls", descripcion: "Proteína vegetal, hierro y carbohidratos complejos.", imagen: "6.jpg" },
+      { id: 7, nombre: "Sopa de Miso con Tofu y Wakame", categoria: "Cenas", subcategoria: "Sopas", descripcion: "Digestiva, ligera y rica en probióticos.", imagen: "7.jpg" },
+      { id: 8, nombre: "Verduras Asadas con Salmón al Romero", categoria: "Cenas", subcategoria: "Pescados", descripcion: "Omega-3, antioxidantes y sabor mediterráneo.", imagen: "8.jpg" },
+      { id: 9, nombre: "Tacos de Coliflor Asada", categoria: "Cenas", subcategoria: "Vegetariano", descripcion: "Crujientes, especiados y servidos en tortillas de maíz.", imagen: "9.jpg" },
+      { id: 10, nombre: "Mousse de Aguacate y Cacao", categoria: "Postres", subcategoria: "Postres fríos", descripcion: "Crema, sin azúcar refinada y rica en grasas saludables.", imagen: "10.jpg" },
+      { id: 11, nombre: "Galletas de Avena, Plátano y Nueces", categoria: "Postres", subcategoria: "Snacks", descripcion: "Endulzadas naturalmente, sin harina ni azúcar.", imagen: "11.jpg" },
+      { id: 12, nombre: "Helado de Plátano Congelado con Cacao", categoria: "Postres", subcategoria: "Helados", descripcion: "Solo 2 ingredientes: plátano y cacao.", imagen: "12.jpg" },
+      { id: 13, nombre: "Jugo de Zanahoria, Jengibre y Naranja", categoria: "Bebidas", subcategoria: "Jugos", descripcion: "Vitamina C, betacaroteno y un toque picante.", imagen: "13.jpg" },
+      { id: 14, nombre: "Té de Cúrcuma y Pimienta Negra", categoria: "Bebidas", subcategoria: "Infusiones", descripcion: "Antiinflamatorio natural.", imagen: "14.jpg" },
+      { id: 15, nombre: "Batido de Proteína Vegana con Frutos Rojos", categoria: "Bebidas", subcategoria: "Batidos", descripcion: "Ideal post-entrenamiento.", imagen: "15.jpg" },
+      { id: 16, nombre: "Hummus Casero con Pimentón Ahumado", categoria: "Snacks", subcategoria: "Untables", descripcion: "Proteína vegetal, fibra y sabor intenso.", imagen: "16.jpg" },
+      { id: 17, nombre: "Palomitas de Maíz con Levadura Nutricional", categoria: "Snacks", subcategoria: "Snacks salados", descripcion: "Crujientes, bajas en calorías.", imagen: "17.jpg" },
+      { id: 18, nombre: "Barritas Energéticas de Dátiles y Semillas", categoria: "Snacks", subcategoria: "Barritas", descripcion: "Endulzadas con dátiles, sin azúcar añadida.", imagen: "18.jpg" },
+      { id: 19, nombre: "Tortilla de Espinacas y Cebolla Caramelizada", categoria: "Desayunos", subcategoria: "Platos principales", descripcion: "Proteína, hierro y un toque dulce.", imagen: "19.jpg" },
+      { id: 20, nombre: "Bowl de Salmón, Arroz Integral y Edamame", categoria: "Almuerzos", subcategoria: "Bowls", descripcion: "Equilibrio perfecto de proteína, fibra y grasas saludables.", imagen: "20.jpg" }
+    ];
+
+    // === OBSERVER PRIMERO (¡LA CLAVE!) ===
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // === FILTRADO Y ORDENAMIENTO ===
+    document.getElementById('searchInput').addEventListener('input', sortAndRender);
+    document.getElementById('sortSelect').addEventListener('change', sortAndRender);
+
+    function sortAndRender() {
+      const term = document.getElementById('searchInput').value.toLowerCase();
+      const order = document.getElementById('sortSelect').value;
+
+      let filtered = recipes.filter(r =>
+        r.nombre.toLowerCase().includes(term) ||
+        r.descripcion.toLowerCase().includes(term)
+      );
+
+      if (order === 'az') {
+        filtered.sort((a, b) => a.nombre.localeCompare(b.nombre));
+      } else {
+        filtered.sort((a, b) => b.nombre.localeCompare(a.nombre));
+      }
+
+      renderRecipes(filtered);
+    }
+
+    function renderRecipes(list) {
+      const container = document.getElementById('recipesContainer');
+      container.innerHTML = '';
+
+      if (list.length === 0) {
+        container.innerHTML = '<p>No se encontraron recetas que coincidan con la búsqueda.</p>';
+        return;
+      }
+
+      list.forEach(recipe => {
+        const card = document.createElement('article');
+        card.className = 'recipe-card';
+        card.innerHTML = `
+          <img src="${recipe.imagen}" alt="Imagen de ${recipe.nombre}" loading="lazy"
+               onerror="this.src=' https://via.placeholder.com/300x150?text=Sin+Imagen'" />
+          <h3>${recipe.nombre}</h3>
+          <p>${recipe.descripcion}</p>
+          <p class="category-tag">${recipe.categoria} • ${recipe.subcategoria}</p>
+        `;
+        container.appendChild(card);
+        observer.observe(card); // Ahora "observer" YA existe
+      });
+    }
+
+    // === ÁRBOL COLAPSABLE ===
+    document.querySelectorAll('.tree-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const ul = toggle.nextElementSibling;
+        const expanded = ul.style.display === 'block';
+        ul.style.display = expanded ? 'none' : 'block';
+        toggle.setAttribute('aria-expanded', !expanded);
+        toggle.classList.toggle('open', !expanded);
+      });
+      toggle.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle.click();
+        }
+      });
+    });
+
+    // === INICIAR ===
+    sortAndRender(); // ¡Al final, cuando todo está listo!
+  </script>
+</body>
+</html>
